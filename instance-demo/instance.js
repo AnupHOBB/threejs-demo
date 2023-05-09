@@ -45,7 +45,6 @@ let instanceMeshMap = new Map()
 let meshModelMatrixMap = new Map()
 new GLTFLoader().load('Armchair.glb', (model)=>{
     model.scene.position.set(0, -2, 0)
-    console.log(model.scene)
     postOrderTraversal(model.scene, (mesh, modelMatrix) => {
         if (mesh.isMesh != undefined && mesh.isMesh && mesh.parent != undefined)
         {
@@ -115,6 +114,14 @@ scene.add( directionalLight );
 let counter = 0
 let counterlimit = 2000
 let decrement = true
+
+let fpsElement = document.querySelector('p')
+let fpsCounter = 0
+setInterval(() => {
+    fpsElement.innerHTML = 'FPS: '+fpsCounter
+    fpsCounter = 0
+}, 1000)
+
 function animate() 
 {
     requestAnimationFrame(animate);
@@ -180,5 +187,6 @@ function animate()
     }
 
     renderer.render(scene, camera);
+    fpsCounter++
 }
 animate();

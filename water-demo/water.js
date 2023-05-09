@@ -64,6 +64,12 @@ ground.rotation.x = Math.PI * - 0.5;
 ground.position.y = -2.1
 scene.add( ground );
 
+let fpsElement = document.querySelector('p')
+let fpsCounter = 0
+setInterval(() => {
+    fpsElement.innerHTML = 'FPS: '+fpsCounter
+    fpsCounter = 0
+}, 1000)
 function animate() {
   requestAnimationFrame(animate);
 
@@ -75,5 +81,6 @@ function animate() {
   cube.rotateOnAxis(tiltAxis, toRad(1));
 
   renderer.render(scene, camera);
+  fpsCounter++
 }
 animate();
