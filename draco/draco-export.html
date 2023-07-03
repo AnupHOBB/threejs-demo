@@ -1,0 +1,38 @@
+<html>
+    <body>
+        <script type="importmap">
+            {
+                "imports":
+                {
+                    "three": "../node_modules/three/src/Three.js",
+                    "gltf-loader": "../node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+                    "draco-exporter": "../node_modules/three/examples/jsm/exporters/DRACOExporter.js"
+                }
+            }
+        </script>
+        <script src="../node_modules/three/examples/jsm/libs/draco/draco_encoder.js"></script>
+        <script type="module">
+            import { GLTFLoader } from 'gltf-loader'
+            import { DRACOExporter } from 'draco-exporter'
+
+            const ASSET_FOLDER = 'assets/'
+            const MODEL_NAME = 'AssemblyLouveredRoofEQ_lo_METERS'
+
+            const downloadLink = document.createElement('a')
+            downloadLink.style.display = 'none'
+            document.body.appendChild(downloadLink)
+
+            const save = (buffer, name) => {
+                downloadLink.href = URL.createObjectURL(new Blob([buffer], { type: "application/octet-stream"}), name)
+                downloadLink.download = name
+                downloadLink.click()
+            }
+
+            let exporter = new DRACOExporter()
+            new GLTFLoader().load(ASSET_FOLDER+MODEL_NAME+'.glb', model => {
+                console.log(model.scene)
+                save(exporter.parse(model.scene.children[0]), MODEL_NAME+'.drc')
+            })
+        </script>
+    </body>
+</html>

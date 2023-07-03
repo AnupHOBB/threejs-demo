@@ -1,7 +1,11 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'orbit'
 import { GLTFLoader } from 'gltf-loader'
+import { DRACOLoader } from 'draco-loader'
 import { ENVMAP_PATH } from 'global-constants'
+
+const DRACO_DECODER_PATH = '../node_modules/three/examples/jsm/libs/draco/'
+const MODEL_PATH = 'Tree_A.glb'//Armchair.glb
 
 const postOrderTraversal = (mesh, onNode, parentMatrix) => 
 {
@@ -18,10 +22,11 @@ const postOrderTraversal = (mesh, onNode, parentMatrix) =>
             matrix = selfMatrix.clone()
         mesh.children.forEach(mesh => postOrderTraversal(mesh, onNode, matrix))
     }
-    else
+    if (parentMatrix != null && parentMatrix != undefined)
     {
         let meshMatrix = new THREE.Matrix4().compose(mesh.position, mesh.quaternion, mesh.scale)
-        let finalMatrix = parentMatrix.multiply(meshMatrix)
+        let parentMatrixClone = parentMatrix.clone()
+        let finalMatrix = parentMatrixClone.multiply(meshMatrix)
         onNode(mesh, finalMatrix)
     }
 }
@@ -43,12 +48,17 @@ document.body.appendChild(renderer.domElement);
 
 let instanceMeshMap = new Map()
 let meshModelMatrixMap = new Map()
-new GLTFLoader().load('Armchair.glb', (model)=>{
+let dracoLoader = new DRACOLoader()
+dracoLoader.setDecoderPath(DRACO_DECODER_PATH)
+let gltfLoader = new GLTFLoader()
+gltfLoader.setDRACOLoader(dracoLoader)
+gltfLoader.load(MODEL_PATH, (model)=>{
     model.scene.position.set(0, -2, 0)
     postOrderTraversal(model.scene, (mesh, modelMatrix) => {
         if (mesh.isMesh != undefined && mesh.isMesh && mesh.parent != undefined)
         {
             let index = mesh.parent.children.indexOf(mesh)
+            console.log(`mesh.name :: ${mesh.name} || index in parent :: ${index}`)
             if (index >= 0)
             {
                 let instancedMesh = new THREE.InstancedMesh(mesh.geometry, mesh.material, 3)
@@ -60,11 +70,14 @@ new GLTFLoader().load('Armchair.glb', (model)=>{
                 instancedMesh.setMatrixAt(2, instanceMatrix3.multiply(modelMatrix))
                 instanceMeshMap.set(instancedMesh.uuid, instancedMesh)
                 meshModelMatrixMap.set(instancedMesh.uuid, modelMatrix.clone())
+                for (let child of mesh.children)
+                    instancedMesh.children.push(child)
                 instancedMesh.instanceMatrix.needsUpdate = true
                 mesh.parent.children[index] = instancedMesh
             }
         }
     })
+    console.log(model.scene)
     scene.add(model.scene)
 }, (xhr)=>{}, (error)=>console.log(error))
 

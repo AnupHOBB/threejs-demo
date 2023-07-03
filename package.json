@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "ar.js": "^2.2.2",
     "three": "^0.152.2"
   }
 }
