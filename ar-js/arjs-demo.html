@@ -66,7 +66,9 @@
 				document.body.removeChild(video)
 				let videoTexture = new THREE.VideoTexture(video)
 			
-				let geometry	= new THREE.Plane(new THREE.Vector3(0, 0, 1), 1)//new THREE.BoxGeometry(1.5,1,1);
+				let front = new THREE.Vector3(0, 0, 1)
+
+				let geometry	= new THREE.Plane(front, 1)//new THREE.BoxGeometry(1.5,1,1);
 				let material	= new THREE.MeshNormalMaterial({
 					opacity: 1,
 					side: THREE.FrontSide,
@@ -81,7 +83,9 @@
 				}) */
 			
 				onRenderFcts.push(function(){
-					renderer.render( scene, camera );
+					camera.getWorldDirection(front)
+					plane.normal = new THREE.Vector3(-front.x, -front.y, -front.z)
+					renderer.render( scene, camera )
 				})
 			
 				var lastTimeMsec= null
