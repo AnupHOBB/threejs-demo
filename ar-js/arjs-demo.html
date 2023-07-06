@@ -77,8 +77,8 @@
 
 	// create atToolkitContext
 	var arToolkitContext = new THREEx.ArToolkitContext({
-		cameraParametersUrl: THREEx.ArToolkitContext.baseURL + '../data/data/camera_para.dat',
-		detectionMode: 'mono',
+		cameraParametersUrl: 'camera_para.dat',
+		detectionMode: 'color_and_matrix',
 	})
 	// initialize it
 	arToolkitContext.init(function onCompleted(){
@@ -103,7 +103,7 @@
 	// init controls for camera
 	var markerControls = new THREEx.ArMarkerControls(arToolkitContext, camera, {
 		type : 'pattern',
-		patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.hiro',
+		patternUrl : 'pattern-marker.hiro',
 		// patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji',
 		// as we controls the camera, set changeMatrixMode: 'cameraTransformMatrix'
 		changeMatrixMode: 'cameraTransformMatrix'
@@ -116,7 +116,7 @@
 	//////////////////////////////////////////////////////////////////////////////////
 
 	// add a torus knot
-	var geometry	= new THREE.CubeGeometry(1,1,1);
+	var geometry	= new THREE.BoxGeometry(1,1,1);
 	var material	= new THREE.MeshNormalMaterial({
 		transparent : true,
 		opacity: 0.5,
