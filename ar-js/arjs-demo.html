@@ -66,15 +66,14 @@
 				document.body.removeChild(video)
 				let videoTexture = new THREE.VideoTexture(video)
 			
-				let geometry	= new THREE.BoxGeometry(1.5,1,1);
+				let geometry	= new THREE.Plane(new THREE.Vector3(0, 0, 1), 1)//new THREE.BoxGeometry(1.5,1,1);
 				let material	= new THREE.MeshNormalMaterial({
-					color: 0xff0000,
 					opacity: 1,
-					side: THREE.DoubleSide,
+					side: THREE.FrontSide,
 					map: videoTexture
 				});
 				let mesh	= new THREE.Mesh( geometry, material );
-				mesh.position.y	= geometry.parameters.height/2
+				//mesh.position.y	= geometry.parameters.height/2
 				scene.add( mesh );
 			
 				/* onRenderFcts.push(function(delta){
