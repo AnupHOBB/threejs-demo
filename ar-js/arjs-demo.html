@@ -15,7 +15,7 @@
 				document.body.appendChild( renderer.domElement );
 			
 				let onRenderFcts= [];
-			
+				
 				let scene	= new THREE.Scene();
 			
 				let camera = new THREE.Camera();
@@ -68,7 +68,7 @@
 			
 				let front = new THREE.Vector3(0, 0, 1)
 
-				let geometry	= new THREE.Plane(front, -1)//new THREE.BoxGeometry(1.5,1,1);
+				let geometry	= new THREE.PlaneGeometry(5, 5);//new THREE.BoxGeometry(1.5,1,1);
 				let material	= new THREE.MeshNormalMaterial({
 					opacity: 1,
 					side: THREE.FrontSide,
