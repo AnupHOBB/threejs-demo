@@ -67,10 +67,8 @@
 				let video = document.createElement('video')
           		video.src = "vid.mp4"
 				let videoTexture = new THREE.VideoTexture(video)
-			
-				let front = new THREE.Vector3(0, 0, -1)
 
-				let geometry	= new THREE.PlaneGeometry(3, 2);
+				let geometry	= new THREE.PlaneGeometry(1, 1);
 				let material	= new THREE.MeshNormalMaterial({
 					opacity: 1,
 					side: THREE.DoubleSide,
