@@ -64,11 +64,11 @@
 				})
 				scene.visible = false
 			
-				let video = document.createElement('video')
+				/* let video = document.createElement('video')
           		video.src = "vid.mp4"
-				let videoTexture = new THREE.VideoTexture(video)
+				let videoTexture = new THREE.VideoTexture(video) */
 
-				let geometry	= new THREE.PlaneGeometry(3, 3);
+				let geometry	= new THREE.PlaneGeometry(1, 1);
 				let material	= new THREE.MeshNormalMaterial({
 					color: new THREE.Color(1, 0, 0),
 					side: THREE.DoubleSide,
@@ -79,11 +79,6 @@
 				scene.add( mesh );
 
 				onRenderFcts.push(function(){
-					//camera.getWorldDirection(front)
-
-					//let planePos = camera.position + front
-					//mesh.position.set(planePos.x, planePos.y, planePos.z)
-
 					renderer.render( scene, camera )
 				})
 			
