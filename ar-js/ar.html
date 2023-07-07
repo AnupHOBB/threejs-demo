@@ -46,6 +46,7 @@
           function animate() 
           {
             requestAnimationFrame(animate);
+            planeMesh.rotation.x += 0.01
             renderer.render(scene, camera);
             controls.update();
           }
