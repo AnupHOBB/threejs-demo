@@ -67,8 +67,10 @@
 				let video = document.createElement('video')
           		video.src = "vid.mp4"
 				let videoTexture = new THREE.VideoTexture(video)
+			
+				let front = new THREE.Vector3(0, 0, -1)
 
-				let geometry	= new THREE.PlaneGeometry(3, 2);
+				let geometry	= new THREE.PlaneGeometry(5, 5);
 				let material	= new THREE.MeshNormalMaterial({
 					opacity: 1,
 					side: THREE.DoubleSide,
@@ -79,6 +81,11 @@
 				scene.add( mesh );
 
 				onRenderFcts.push(function(){
+					camera.getWorldDirection(front)
+
+					//let planePos = camera.position + front
+					//mesh.position.set(planePos.x, planePos.y, planePos.z)
+
 					renderer.render( scene, camera )
 				})
 			
