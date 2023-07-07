@@ -68,7 +68,7 @@
 				document.body.removeChild(video)
 				let videoTexture = new THREE.VideoTexture(video)
 			
-				let front = new THREE.Vector3(0, 0, 1)
+				let front = new THREE.Vector3(0, 0, -1)
 
 				let geometry	= new THREE.PlaneGeometry(5, 5);//new THREE.BoxGeometry(1.5,1,1);
 				let material	= new THREE.MeshNormalMaterial({
@@ -79,13 +79,17 @@
 				let mesh	= new THREE.Mesh( geometry, material );
 				//mesh.position.y	= geometry.parameters.height/2
 				scene.add( mesh );
-				mesh.rotation.x += toRadians(90)
+				mesh.rotation.x += Math.PI
 				/* onRenderFcts.push(function(delta){
 					mesh.rotation.x += Math.PI*delta
 				}) */
 			
 				onRenderFcts.push(function(){
 					camera.getWorldDirection(front)
+
+					//let planePos = camera.position + front
+					//mesh.position.set(planePos.x, planePos.y, planePos.z)
+
 					renderer.render( scene, camera )
 				})
 			
