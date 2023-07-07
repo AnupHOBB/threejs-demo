@@ -78,13 +78,12 @@
 				//mesh.position.y	= geometry.parameters.height/2
 				scene.add( mesh );
 			
-				/* onRenderFcts.push(function(delta){
+				onRenderFcts.push(function(delta){
 					mesh.rotation.x += Math.PI*delta
-				}) */
+				})
 			
 				onRenderFcts.push(function(){
 					camera.getWorldDirection(front)
-					plane.normal = new THREE.Vector3(-front.x, -front.y, -front.z)
 					renderer.render( scene, camera )
 				})
 			
