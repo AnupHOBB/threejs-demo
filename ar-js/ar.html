@@ -31,7 +31,7 @@
 
           let video = document.createElement('video')
           video.src = "vid.mp4"
-				  let videoTexture = new THREE.VideoTexture(video)
+          let videoTexture = new THREE.VideoTexture(video)
 
           const planeGeometry = new THREE.PlaneGeometry(3, 2);
           const planeMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, map: videoTexture });
@@ -46,7 +46,7 @@
           function animate() 
           {
             requestAnimationFrame(animate);
-            planeMesh.rotation.x += 0.01
+            //planeMesh.rotation.x += 0.01
             renderer.render(scene, camera);
             controls.update();
           }
