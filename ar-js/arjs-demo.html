@@ -72,10 +72,10 @@
 				texture.wrapT = THREE.RepeatWrapping
 				texture.repeat.set(4, 4)
 
-				let geometry	= new THREE.PlaneGeometry(1, 1);//new THREE.SphereGeometry( 1, 32, 16 );//
+				let geometry	= new THREE.PlaneGeometry(1, 1);//new THREE.SphereGeometry( 1, 32, 16 );
 				let material	= new THREE.MeshNormalMaterial({
 					color: new THREE.Color(1, 0, 0),
-					side: THREE.FrontSide,
+					side: THREE.DoubleSide,
 					map: texture
 					/* map: videoTexture */
 				});
