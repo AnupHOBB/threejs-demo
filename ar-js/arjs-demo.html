@@ -76,7 +76,7 @@
 				});
 				//material.flipY = true
 				let mesh	= new THREE.Mesh( geometry, material );
-				mesh.rotation.x -= Math.PI
+				mesh.rotation.x += Math.PI * 3
 				scene.add( mesh );
 
 				onRenderFcts.push(function(){
