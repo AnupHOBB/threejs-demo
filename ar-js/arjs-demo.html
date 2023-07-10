@@ -67,20 +67,16 @@
 				let video = document.createElement('video')
           		video.src = "vid.mp4"
 				let videoTexture = new THREE.VideoTexture(video)
-				/* let texture = new THREE.TextureLoader().load('sample.webp')
-				texture.wrapS = THREE.RepeatWrapping
-				texture.wrapT = THREE.RepeatWrapping
-				texture.repeat.set(4, 4) */
 
-				let geometry	= new THREE.PlaneGeometry(1, 1);//new THREE.SphereGeometry( 1, 32, 16 );
+				let geometry	= new THREE.PlaneGeometry(1, 1);
 				let material	= new THREE.MeshBasicMaterial({
 					color: new THREE.Color(1, 1, 1),
 					side: THREE.DoubleSide,
-					/* map: texture */
 					map: videoTexture
 				});
 				let mesh	= new THREE.Mesh( geometry, material );
 				mesh.rotation.x += Math.PI
+				mesh.rotation.z += Math.PI * 2
 				scene.add( mesh );
 
 				onRenderFcts.push(function(){
