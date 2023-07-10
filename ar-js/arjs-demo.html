@@ -73,7 +73,7 @@
 				texture.repeat.set(4, 4)
 
 				let geometry	= new THREE.PlaneGeometry(1, 1);//new THREE.SphereGeometry( 1, 32, 16 );
-				let material	= new THREE.MeshNormalMaterial({
+				let material	= new THREE.MeshBasicMaterial({
 					color: new THREE.Color(1, 0, 0),
 					side: THREE.DoubleSide,
 					map: texture
