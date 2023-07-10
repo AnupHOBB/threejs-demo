@@ -76,8 +76,8 @@
 				let material	= new THREE.MeshBasicMaterial({
 					color: new THREE.Color(1, 0, 0),
 					side: THREE.FrontSide,
-					/* map: texture */
-					map: videoTexture
+					map: texture
+					/* map: videoTexture */
 				});
 				let mesh	= new THREE.Mesh( geometry, material );
 				mesh.rotation.x += Math.PI
