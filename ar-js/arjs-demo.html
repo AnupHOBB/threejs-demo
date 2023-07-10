@@ -43,7 +43,7 @@
 			
 				let arToolkitContext = new THREEx.ArToolkitContext({
 					cameraParametersUrl: 'camera_para.dat',
-					detectionMode: 'color_and_matrix',
+					detectionMode:  'mono'//'color_and_matrix',
 				})
 			
 				arToolkitContext.init(function onCompleted(){
@@ -63,11 +63,6 @@
 					changeMatrixMode: 'cameraTransformMatrix'
 				})
 				scene.visible = false
-			
-				/* let video = document.createElement('video')
-          		video.src = "vid.mp4"
-				video.play = 'true';
-				video.loop = 'true'; */
 
 				let video = document.querySelector('video')
 
