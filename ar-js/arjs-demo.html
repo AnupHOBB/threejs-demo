@@ -68,7 +68,7 @@
           		video.src = "vid.mp4"
 				let videoTexture = new THREE.VideoTexture(video)
 
-				let geometry	= new THREE.PlaneGeometry(1, 1);
+				let geometry	= new THREE.SphereGeometry( 1, 32, 16 );//new THREE.PlaneGeometry(1, 1);
 				let material	= new THREE.MeshBasicMaterial({
 					color: new THREE.Color(1, 1, 1),
 					side: THREE.DoubleSide,
