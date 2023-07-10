@@ -53,11 +53,7 @@
 				onRenderFcts.push(function(){
 					if( arToolkitSource.ready === false )	
 						return
-					arToolkitContext.update( arToolkitSource.domElement )
-
-					//This was added
-					camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
-					
+					arToolkitContext.update( arToolkitSource.domElement )					
 					scene.visible = camera.visible
 				})
 			
@@ -79,10 +75,15 @@
 					map: videoTexture
 				});
 
-				let mesh	= new THREE.Mesh( geometry, material );
+				let mesh = new THREE.Mesh( geometry, material );
 				scene.add( mesh );
 
 				onRenderFcts.push(function(){
+					///////This was added
+					let position = camera.position
+					mesh.position.set(-position.x, -position.y, -position.z)
+					//////////////////////////
+					
 					renderer.render( scene, camera )
 				})
 			
