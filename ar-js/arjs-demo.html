@@ -82,6 +82,8 @@
 					///////This was added
 					let position = camera.position
 					mesh.position.set(-position.x, -position.y, -position.z)
+					alert('x : '+position.x+' | y : '+position.y+' | z : '+position.z)
+					console.log(position)
 					//////////////////////////
 					
 					renderer.render( scene, camera )
