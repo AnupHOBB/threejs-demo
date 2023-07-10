@@ -43,7 +43,7 @@
 			
 				let arToolkitContext = new THREEx.ArToolkitContext({
 					cameraParametersUrl: 'camera_para.dat',
-					detectionMode:  'mono'//'color_and_matrix',
+					detectionMode:  'color_and_matrix',
 				})
 			
 				arToolkitContext.init(function onCompleted(){
@@ -54,6 +54,10 @@
 					if( arToolkitSource.ready === false )	
 						return
 					arToolkitContext.update( arToolkitSource.domElement )
+
+					//This was added
+					camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
+					
 					scene.visible = camera.visible
 				})
 			
