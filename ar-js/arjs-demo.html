@@ -50,7 +50,7 @@
 					camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
 				})
 
-				if( arToolkitContext.arController !== null )
+				/* if( arToolkitContext.arController !== null )
 				{
 					alert('arController present')
 					arToolkitContext.arController.addEventListener('getMarker', function(ev) 	{
@@ -60,7 +60,7 @@
 						preTag.innerHTML = position//ev.data.marker.pos
 						alert('marker found')
 					});
-        		}
+        		} */
 			
 				onRenderFcts.push(function(){
 					if( arToolkitSource.ready === false )	
@@ -75,6 +75,10 @@
 					changeMatrixMode: 'cameraTransformMatrix'
 				})
 				scene.visible = false
+
+				markerControls.addEventListener('markerFound', function(event){
+					alert('marker found')
+				})
 
 				let video = document.querySelector('video')
 
