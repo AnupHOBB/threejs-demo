@@ -52,6 +52,7 @@
 
 				if( arToolkitContext.arController !== null )
 				{
+					alert('arController present')
 					arToolkitContext.arController.addEventListener('getMarker', function(ev) 	{
 						console.log('marker pos: ', ev.data.marker.pos);
 						let position = '('+ ev.data.marker.pos.x + ', '+ ev.data.marker.pos.y + ', '+ ev.data.marker.pos.z + ')'
