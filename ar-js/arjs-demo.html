@@ -54,8 +54,9 @@
 				{
 					arToolkitContext.arController.addEventListener('getMarker', function(ev) 	{
 						console.log('marker pos: ', ev.data.marker.pos);
+						let position = '('+ ev.data.marker.pos.x + ', '+ ev.data.marker.pos.y + ', '+ ev.data.marker.pos.z + ')'
 						let preTag = document.querySelector('pre')
-						preTag.innerHTML = ev.data.marker.pos
+						preTag.innerHTML = position//ev.data.marker.pos
 					});
         		}
 			
