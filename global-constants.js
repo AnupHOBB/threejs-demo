@@ -1,1 +1,2 @@
-export const ENVMAP_PATH = '../envmap.jpg'
+export const ENVMAP_PATH = '../cubemap/back.jpg'//'../envmap.jpg'
+export const ENVMAP_TEXTURES = ['../cubemap/right.jpg','../cubemap/left.jpg','../cubemap/top.jpg','../cubemap/bottom.jpg','../cubemap/front.jpg','../cubemap/back.jpg']
