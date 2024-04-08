@@ -40,7 +40,7 @@ const materialGlass = new THREE.MeshPhysicalMaterial({
     transparent: false, 
     opacity: 1,
     transmission: 1, 
-    roughness: 1, 
+    roughness: 0.5, 
     metalness: 0,  
     envMap: cubeTexture,
     envMapIntensity: 0.1,
@@ -49,8 +49,8 @@ const materialGlass = new THREE.MeshPhysicalMaterial({
     specularIntensity: 1,
     iridescence: 0.1,
     iridescenceIOR: 1.5,
-    clearcoat: 1,
-    thickness: 1
+   /*  clearcoat: 0.1, */
+    thickness: 5//1
 });
 
 const sphereGlass = new THREE.Mesh(geometry, materialGlass);
