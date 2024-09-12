@@ -1,0 +1,41 @@
+<html></html>
+    <head>
+        <script type="importmap">
+            {
+                "imports":
+                {
+                    "three": "../node_modules/three/src/Three.js",
+					"text3D": "../node_modules/three/examples/jsm/geometries/TextGeometry.js",
+					"lineMaterial": "../node_modules/three/examples/jsm/lines/LineMaterial.js",
+					"loader": "../node_modules/three/examples/jsm/loaders/FontLoader.js",
+                    "orbit": "../node_modules/three/examples/jsm/controls/OrbitControls.js",
+                    "global-constants": "../global-constants.js"
+                }
+            }
+        </script>
+        <script type="module" src="text3d.js"></script>
+        <style>
+                body, html {
+                    margin: 0;
+                    overflow: hidden;
+                    width: 100%;
+                    height: 100%;
+                }
+                
+                canvas {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                p {
+                    position: absolute;
+                    top: 1%;
+                    left: 1%;
+                    font-size: xx-large;
+                    user-select: none;
+                }
+        </style>
+    </head>
+    <body><p>FPS: 0</p></body>
+</html>
