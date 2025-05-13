@@ -22,7 +22,9 @@ const loader = new FontLoader()
 loader.load('Roobert Medium_Regular.json', f=>{
     const dimensionLine = new THREE.Group()
     
-    const textGeometry = new TextGeometry('40', {
+    let count = 40
+
+    const textGeometry = new TextGeometry(count+'', {
         font: f,
         size: 0.02,
         height: 0.01,
@@ -35,7 +37,7 @@ loader.load('Roobert Medium_Regular.json', f=>{
     })
     textGeometry.center()
     const textMaterial = new THREE.MeshBasicMaterial({color: new THREE.Color(1, 1, 1)})
-    const text = new THREE.Mesh(textGeometry, textMaterial)
+    let text = new THREE.Mesh(textGeometry, textMaterial)
     text.position.set(0, 0, 0)
     dimensionLine.attach(text)
 
@@ -81,6 +83,8 @@ loader.load('Roobert Medium_Regular.json', f=>{
 
     dimensionLine.attach(lines)
 
+    lines.rotation.set(0, 0, 0)
+
     scene.add(dimensionLine)
 
     mainLine = lines
@@ -89,6 +93,29 @@ loader.load('Roobert Medium_Regular.json', f=>{
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     renderer.setSize(window.innerWidth, window.innerHeight)
     animate()
+
+    setInterval(()=>{
+        count++
+
+        let position = text.position
+        dimensionLine.remove(text)
+        
+        const textGeometry = new TextGeometry(count+'', {
+            font: f,
+            size: 0.02,
+            height: 0.01,
+            curveSegments: 16,
+            bevelEnabled: false,
+            bevelThickness: 0.0125,
+            bevelSize: 0.025,
+            bevelOffset: 0,
+            bevelSegments: 16
+        })
+        textGeometry.center()
+        text = new THREE.Mesh(textGeometry, textMaterial)
+        text.position.set(position.x, position.y, position.z)
+        dimensionLine.attach(text)
+    }, 1000)
 })
 
 function animate() 
